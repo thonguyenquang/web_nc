@@ -1,0 +1,219 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+.contain
+{
+    width: 100%;
+    
+   
+    /* display: flex;
+  flex-direction: column; */
+  
+}
+.navigation
+{
+    width: 100%;
+    height: 102px;
+    background-color: #5dc0d96a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+.navigation .right a
+{
+    color: #110101;
+    text-decoration: none;
+    margin-left: 60px;
+    font-size: 16px;
+}
+.navigation .left a
+{
+    color: #110101;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 40px;
+}
+.navigation .left ion-icon
+{
+    font-size: 24px;
+    color: #110101;
+    margin-right: 60px;
+}
+
+/* =================main======================== */
+
+.main
+{
+    width: 100%;
+  min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+   
+  
+}
+.main .main-background
+{
+    width: 100%;
+    height: 100vh;
+    background-image: url('../../image/background22.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    margin-bottom: 100px;
+   
+}
+.main .main-background span
+{
+    position: absolute;
+    top: 38%;
+    left: 34%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    /* color: #ffffffa4; */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+    color: transparent;
+    background-image: linear-gradient(to right, #ec210e, #ffffffa4);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-clip: text;
+    -webkit-background-clip: text;
+    transition: background-size 0.5s ease;
+}
+.main .main-background button 
+{
+    position: absolute;
+    top: 55%;
+    left: 11.7%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #e70f49;
+    background-color: #272023e7;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 0;
+    transition: background-color 0.3s ease;
+}
+.main .main-background span:hover
+{
+    background-size: 100% 100%;
+}
+
+
+.main .main-background button::before
+{
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: linear-gradient(45deg, rgb(19, 5, 73), rgb(143, 233, 225),rgb(19, 5, 73));
+    background-size: 400%;
+    border-radius: 10px;
+    z-index: -1;
+    filter: blur(5px);
+    animation: glow-border 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.main .main-background button:hover::before
+{
+    opacity: 1;
+}
+.main .main-background button:hover
+{
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #fff;
+}
+@keyframes glow-border {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+/* ===================section======================== */ 
+.section
+{
+    width: 100%;
+    min-height: 100vh;
+     
+    /* display: flex;  */
+    justify-content: center;
+    background-color: white;
+    position: relative;
+    /* flex-direction: row; */
+    overflow: hidden;
+
+}
+.section .section-title
+{
+    font-family: cursive;
+    font-size: 2.9rem;
+    color: #110101;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+ 
+}
+.section .section-content .section-item
+{
+   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
+}
+.section .section-content
+{
+    width: 100%;
+    /* display: flex;
+   
+    align-items: center;
+    justify-content: center; */
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding-top: 80px;
+}
+.section-item img
+{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+   
+}

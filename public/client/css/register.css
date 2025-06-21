@@ -1,0 +1,44 @@
+
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+.contain {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    will-change: transform;
+}
+
+.register {
+    position: absolute;
+    top: 62%;
+    left: 80.06%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9); /* Nền mờ nhẹ để dễ nhìn */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);   
+    will-change: transform;
+    
+}
