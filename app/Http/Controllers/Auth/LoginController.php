@@ -15,24 +15,22 @@ class LoginController extends Controller
     }
     
     public function login(Request $request)
-{
-    $email = $request->input("email");
-    $password = $request->input("password");
-    $status = Auth::attempt(['email'=> $email, 'password'=> $password]);
+    {
+        $email = $request->input("email");
+        $password = $request->input("password");
+        $status = Auth::attempt(['email'=> $email, 'password'=> $password]);
 
-    if ($status) {
-
-        $user=Auth::user(); // biến $user hay $url là do mình tự đặt tên biến nhé 
-        $urlRedi='/';
-        if($user->is_admin==1)
-        {
-            $urlRedi= '/dashboard';
+        if ($status) {
+            $user = Auth::user();
+            $urlRedi = '/';
+            if ($user->is_admin == 1) {
+                $urlRedi = '/dashboard';
+            } elseif ($user->role === 'shipper') {
+                $urlRedi = '/shipper/orders'; // chuyển hướng shipper về trang shipper
+            }
+            return redirect($urlRedi);
         }
-        return redirect($urlRedi);
 
+        return back()->with('error', 'Email hoặc mật khẩu không đúng');
     }
-
-    return back()->with('error', 'Email hoặc mật khẩu không đúng');
-}
-
 }

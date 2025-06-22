@@ -57,7 +57,8 @@ class CategoriesController extends Controller
      */
     public function edit(category $category)
     {
-        //
+        // Không có logic redirect hoặc session nào ngăn chuyển tab, chỉ trả về view edit
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -65,7 +66,14 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'nullable',
+        ]);
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->save();
+        return redirect()->route('admin.categories.index')->with('success', 'Cập nhật danh mục thành công!');
     }
 
     /**
@@ -73,6 +81,7 @@ class CategoriesController extends Controller
      */
     public function destroy(category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('admin.categories.index')->with('success', 'Xóa danh mục thành công!');
     }
 }

@@ -23,7 +23,7 @@ class ReviewController extends Controller
         $hasCompletedOrder = OrderItem::where('product_id', $product->id)
             ->whereHas('order', function ($query) use ($user) {
                 $query->where('user_id', $user->id)
-                      ->where('status', 'completed');
+                      ->whereIn('status', ['completed', 'delivered']);
             })
             ->exists();
 

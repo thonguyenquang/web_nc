@@ -12,5 +12,12 @@ class ProductController extends Controller
         return view('layouts.shop', compact('products'));
 
     }
+
+    public function show(Product $product)
+    {
+        // Nạp quan hệ reviews, user, category nếu có
+        $product->load(['reviews.user', 'category']);
+        return view('products.show', compact('product'));
+    }
 }
 

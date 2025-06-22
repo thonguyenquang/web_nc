@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
-        'fullname', 'email', 'phone', 'province', 'district', 'ward', 'address', 'note', 'total_price', 'status','user_id',
+        'fullname', 'email', 'phone', 'province', 'district', 'ward', 'address', 'note', 'total_price', 'status', 'user_id', 'shipper_id',
     ];
 
     public function items()
@@ -17,5 +20,9 @@ class Order extends Model
     public function user()
     {
     return $this->belongsTo(User::class);
+    }
+    public function shipper()
+    {
+        return $this->belongsTo(\App\Models\Shipper::class);
     }
 }
