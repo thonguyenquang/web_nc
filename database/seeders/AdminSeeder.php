@@ -28,5 +28,15 @@ class AdminSeeder extends Seeder
             'password' => bcrypt('123456'),
         ]);
     }
+    // Kiểm tra và tạo Shipper nếu chưa tồn tại
+    if (!User::where('email', 'shipper@example.com')->exists()) {
+        User::create([
+            'name' => 'Shipper Demo',
+            'email' => 'shipper@example.com',
+            'is_admin' => false,
+            'role' => 'shipper',
+            'password' => bcrypt('password123'),
+        ]);
+    }
     }
 }

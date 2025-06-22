@@ -50,6 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Thêm route đổi mật khẩu nếu dùng blade @include('profile.partials.update-password-form')
+    Route::put('/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 });
 
 // Orders
@@ -88,6 +90,7 @@ Route::middleware(['auth', AdminAuthentication::class])->prefix('admin')->name('
     Route::resource('products', App\Http\Controllers\Admin\ProductsController::class);
     Route::resource('categories', App\Http\Controllers\Admin\CategoriesController::class);
     Route::resource('orders', App\Http\Controllers\Admin\OrderController::class);
+    Route::resource('shippers', App\Http\Controllers\Admin\ShipperController::class);
 });
 
 // history 
@@ -96,4 +99,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/reviews/{product}', [App\Http\Controllers\ReviewController::class, 'store'])->name('reviews.store');
 });
 Route::post('/reviews/{product}', [App\Http\Controllers\ReviewController::class, 'store'])->name('reviews.store');
+
+// Trang chi tiết sản phẩm
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+
+// Shipper routes
+Route::middleware(['auth'])->prefix('shipper')->name('shipper.')->group(function () {
+    Route::get('orders', [\App\Http\Controllers\Shipper\OrderController::class, 'index'])->name('orders.index');
+    Route::get('orders/{order}/edit', [\App\Http\Controllers\Shipper\OrderController::class, 'edit'])->name('orders.edit');
+    Route::put('orders/{order}', [\App\Http\Controllers\Shipper\OrderController::class, 'update'])->name('orders.update');
+    Route::get('progress', [\App\Http\Controllers\Shipper\OrderController::class, 'progress'])->name('orders.progress');
+});
 
