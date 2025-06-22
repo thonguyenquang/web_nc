@@ -6,7 +6,7 @@
             </a>
         </div>
         <div class="header-right">
-            <div class="header-item"><a class="nav-link" href="{{route('home')}}">Home</a></div>
+            <div class="header-item"><a class="nav-link" href="{{route('layouts.home')}}">Home</a></div>
             <div class="header-item"><a class="nav-link" href="{{route('ourstory')}}">Our Story</a></div>
             <div class="header-item"><a class="nav-link" href="{{route('shop')}}">Shop</a></div>
             

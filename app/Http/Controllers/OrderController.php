@@ -14,7 +14,7 @@ class OrderController extends Controller
             abort(403, 'Bạn không có quyền xem đơn hàng này.');
         }
 
-        $order->load('items.product');
+        $order->load('items.product.reviews.user'); // nạp thêm cả review và user
         return view('orders.show', compact('order'));
     }
 
@@ -22,5 +22,14 @@ class OrderController extends Controller
     {
         $orders = Order::where('user_id', Auth::id())->latest()->get();
         return view('orders.track', compact('orders'));
+    }
+
+    public function history()
+    {
+        $orders = Order::where('user_id', Auth::id())
+            ->with('items.product.reviews')
+            ->get();
+
+        return view('orders.history', compact('orders'));
     }
 }

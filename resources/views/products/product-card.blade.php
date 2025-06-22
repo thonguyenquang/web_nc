@@ -5,7 +5,7 @@
         </div>
     @endif
 
-    <img src="{{ asset($product->image) }}" class="card-img-top img-fluid" alt="{{ $product->name }}" style="height: 280px; object-fit: cover;">
+    <img src="{{ $product->image_url }}" class="card-img-top img-fluid" alt="{{ $product->name }}" style="height: 280px; object-fit: cover;">
 
     <div class="card-body text-center">
         <h5 class="card-title fw-semibold">

@@ -10,12 +10,9 @@ use Illuminate\Support\Str;
 class Product extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'name',
-        'description',
-        'price',
-        'image',
-        'category_id',
+        'name', 'description', 'price', 'image', 'category_id',
     ];
 
     public function category()
@@ -29,5 +26,15 @@ class Product extends Model
             return asset($this->image);
         }
         return asset('storage/' . $this->image);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function averageRating()
+    {
+        return $this->reviews()->avg('rating') ?? 0;
     }
 }

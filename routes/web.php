@@ -7,13 +7,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminAuthentication;
 use App\Http\Controllers\Auth\LogoutController;
-
+use App\Http\Controllers\HomeController;
 
 
 // Trang chủ
-Route::get('/', function () {
-    return view('layouts.home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('layouts.home');
 
 // Shop
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
@@ -92,8 +90,10 @@ Route::middleware(['auth', AdminAuthentication::class])->prefix('admin')->name('
     Route::resource('orders', App\Http\Controllers\Admin\OrderController::class);
 });
 
-// bankk 
-// Route::get('/checkout/qr/{order_id}', function ($order_id) {
-//     return view('cart.qr', ['order_id' => $order_id]);
-// })->name('checkout.qr');
-//
+// history 
+Route::middleware('auth')->group(function () {
+    Route::get('/orders/history', [App\Http\Controllers\OrderController::class, 'history'])->name('orders.history');
+    Route::post('/reviews/{product}', [App\Http\Controllers\ReviewController::class, 'store'])->name('reviews.store');
+});
+Route::post('/reviews/{product}', [App\Http\Controllers\ReviewController::class, 'store'])->name('reviews.store');
+

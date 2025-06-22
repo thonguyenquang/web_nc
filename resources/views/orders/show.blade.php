@@ -60,9 +60,143 @@
             </div>
             <div class="text-center mt-4">
                 <a href="{{ route('orders.track', $order->id) }}" class="btn btn-outline-primary px-4"><i class="bi bi-truck"></i> Theo dõi đơn hàng</a>
-                <a href="{{ route('home') }}" class="btn btn-link">Về trang chủ</a>
+                <a href="{{ route('layouts.home') }}" class="btn btn-link">Về trang chủ</a>
             </div>
+
+            @foreach($order->items as $item)
+            @php $product = $item->product; @endphp
+        
+            @if($product)
+                <div class="mt-4 border-top pt-3">
+                    <h6>Đánh giá cho: {{ $product->name }}</h6>
+                    <p>★ Trung bình: {{ number_format($product->averageRating(), 1) }} / 5</p>
+        
+                    @php
+                        $userReview = $product->reviews->where('user_id', Auth::id())->first();
+                    @endphp
+        
+                    @if ($order->status === 'completed')
+                        @if ($userReview)
+                            <p>Bạn đã đánh giá: {{ $userReview->rating }} sao</p>
+                            <p>{{ $userReview->comment }}</p>
+                            <button class="btn btn-sm btn-warning btn-review-edit"
+                                data-product-id="{{ $product->id }}"
+                                data-rating="{{ $userReview->rating }}"
+                                data-comment="{{ $userReview->comment }}">
+                                Sửa đánh giá
+                            </button>
+                        @else
+                            <button class="btn btn-sm btn-primary btn-review"
+                                data-product-id="{{ $product->id }}">
+                                Viết đánh giá
+                            </button>
+                        @endif
+                    @else
+                        <p class="text-muted">Bạn có thể đánh giá sau khi đơn hàng hoàn thành.</p>
+                    @endif
+        
+                    <div class="mt-2">
+                        <h6>Các đánh giá khác:</h6>
+                        @forelse($product->reviews as $review)
+                            <p><strong>{{ $review->user->name }}</strong>: {{ $review->rating }} sao</p>
+                            <p>{{ $review->comment }}</p>
+                        @empty
+                            <p>Chưa có đánh giá nào.</p>
+                        @endforelse
+                    </div>
+                </div>
+            @endif
+        @endforeach
+        
+
+
         </div>
     </div>
 </div>
+<!-- Modal đánh giá -->
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="reviewForm" class="modal-content">
+        @csrf
+        <div class="modal-header">
+          <h5 class="modal-title">Đánh giá sản phẩm</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="product_id" name="product_id">
+          <div class="mb-3">
+            <label class="form-label">Số sao (1-5)</label>
+            <input type="number" min="1" max="5" class="form-control" id="rating" name="rating" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Bình luận</label>
+            <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Bootstrap & Ajax -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          const reviewModal = new bootstrap.Modal(document.getElementById('reviewModal'));
+          const reviewForm = document.getElementById('reviewForm');
+          const productInput = document.getElementById('product_id');
+          const ratingInput = document.getElementById('rating');
+          const commentInput = document.getElementById('comment');
+  
+          document.querySelectorAll('.btn-review, .btn-review-edit').forEach(btn => {
+              btn.addEventListener('click', function () {
+                  productInput.value = this.dataset.productId;
+                  ratingInput.value = this.dataset.rating || '';
+                  commentInput.value = this.dataset.comment || '';
+                  reviewModal.show();
+              });
+          });
+  
+          reviewForm.addEventListener('submit', function (e) {
+              e.preventDefault();
+              const productId = productInput.value;
+              const url = `/reviews/${productId}`;
+              const data = {
+                  rating: ratingInput.value,
+                  comment: commentInput.value,
+                  _token: '{{ csrf_token() }}'
+              };
+  
+              fetch(url, {
+                  method: 'POST',
+                  headers: {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/json',
+                      'X-CSRF-TOKEN': data._token
+                  },
+                  body: JSON.stringify(data)
+              })
+              .then(response => {
+                  if (!response.ok) throw response;
+                  return response.json();
+              })
+              .then(result => {
+                  alert(result.message);
+                  location.reload(); // Reload lại để xem đánh giá mới
+              })
+              .catch(async error => {
+                  let message = 'Đã có lỗi xảy ra.';
+                  if (error.json) {
+                      const json = await error.json();
+                      message = json.message || message;
+                  }
+                  alert(message);
+              });
+          });
+      });
+  </script>
+  
 @endsection

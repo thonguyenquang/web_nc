@@ -36,7 +36,7 @@
             @endif
 
             <div class="text-center mt-4">
-                <a href="{{ route('home') }}" class="btn btn-link">← Quay lại trang chủ</a>
+                <a href="{{ route('layouts.home') }}" class="btn btn-link">← Quay lại trang chủ</a>
             </div>
         </div>
     </div>

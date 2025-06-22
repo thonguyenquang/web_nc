@@ -112,25 +112,19 @@
                 <label for="description">Mô tả:</label>
                 <textarea name="description" id="description" class="form-control" rows="4" required placeholder="Nhập mô tả cho sản phẩm..."></textarea>
             </div>
-
-            <div class="form-group">
-                <label for="season">Mùa (season):</label>
-                <input type="text" name="season" id="season" class="form-control" placeholder="Ví dụ: Xuân, Hè, Thu, Đông...">
-            </div>
-
             <div class="form-group">
                 <label for="page">Trang hiển thị (page):</label>
                 <select name="page" id="page" class="form-control">
-                    <option value="">-- Không hiển thị --</option>
+                   
                     <option value="home">Home</option>
-                    <option value="shop">Shop</option>
+                    <option value="shop">Default shop</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="section">Khu vực hiển thị (section):</label>
                 <select name="section" id="section" class="form-control">
-                    <option value="">-- Không hiển thị --</option>
+                 
                     <option value="season_collection">Season Collection</option>
                     <option value="promotions">Promotions</option>
                 </select>
