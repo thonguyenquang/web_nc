@@ -4,7 +4,7 @@
 <section class="order-list-section">
     <h1 class="order-list-title">📦 Danh sách đơn hàng</h1>
     <form method="get" class="order-filter-form">
-        <input type="text" name="customer_name" placeholder="Tên khách" value="{{ request('customer_name') }}">
+        <input type="text" name="fullname" placeholder="Tên khách" value="{{ request('fullname') }}">
         <select name="status">
             <option value="">-- Trạng thái --</option>
             <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Chờ xác nhận</option>

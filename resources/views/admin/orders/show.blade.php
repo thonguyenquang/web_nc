@@ -5,9 +5,9 @@
     <h2 class="order-detail-title">📝 Chi tiết đơn hàng <span class="order-id">#{{ $order->id }}</span></h2>
     <div class="order-detail-body">
         <ul class="order-info-list">
-            <li><strong>Khách hàng:</strong> <span>{{ $order->customer_name }}</span></li>
-            <li><strong>Số điện thoại:</strong> <span>{{ $order->customer_phone }}</span></li>
-            <li><strong>Địa chỉ:</strong> <span>{{ $order->customer_address }}</span></li>
+            <li><strong>Khách hàng:</strong> <span>{{ $order->fullname }}</span></li>
+            <li><strong>Số điện thoại:</strong> <span>{{ $order->phone }}</span></li>
+            <li><strong>Địa chỉ:</strong> <span>{{ $order->address }}</span></li>
             <li><strong>Tổng tiền:</strong> <span class="price">{{ number_format($order->total_price) }} đ</span></li>
             <li>
                 <strong>Trạng thái:</strong>

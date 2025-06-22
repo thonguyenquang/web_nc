@@ -79,7 +79,7 @@ class OrderController extends Controller
         $order->status = $request->status;
         $order->save();
 
-        return redirect()->route('orders.index')
+        return redirect()->route('admin.orders.index')
             ->with('success', 'Cập nhật trạng thái đơn hàng thành công!');
     }
 
@@ -92,7 +92,7 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $order->delete();
 
-        return redirect()->route('orders.index')
+        return redirect()->route('admin.orders.index')
             ->with('success', 'Xóa đơn hàng thành công!');
     }
 }

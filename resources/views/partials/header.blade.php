@@ -40,7 +40,8 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
                         <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Tài khoản</a></li>
-                        <li><a class="dropdown-item" href="{{ url('/orders/' . Auth::id() . '/track') }}">Theo dõi đơn hàng</a></li>
+                        <li><a class="dropdown-item" href="{{ route('orders.track') }}">Theo dõi đơn hàng</a>
+                        </li>
                         <li>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

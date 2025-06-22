@@ -103,6 +103,7 @@ class CartController extends Controller
             'district' => 'required|string',
             'ward' => 'required|string',
             'address' => 'required|string',
+     
         ]);
 
         $cart = Cart::with('product')->where('user_id', Auth::id())->get();
@@ -127,6 +128,7 @@ class CartController extends Controller
             'note' => $request->note,
             'total_price' => $total,
             'status' => 'pending',
+        
         ]);
         
 

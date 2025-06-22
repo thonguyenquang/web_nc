@@ -41,7 +41,7 @@ class CategoriesController extends Controller
         $category->description = $request->description;
         $category->save();
 
-        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
+        return redirect()->route('admin.categories.index')->with('success', 'Category created successfully.');
     }
 
     /**

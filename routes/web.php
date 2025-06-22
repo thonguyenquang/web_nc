@@ -55,8 +55,8 @@ Route::middleware('auth')->group(function () {
 });
 
 // Orders
-Route::get('/orders/{order}', [App\Http\Controllers\OrderController::class, 'show'])->name('orders.show');
-Route::get('/orders/{order}/track', [App\Http\Controllers\OrderController::class, 'track'])->name('orders.track');
+// Route::get('/orders/{order}', [App\Http\Controllers\OrderController::class, 'show'])->name('orders.show');
+// Route::get('/orders/{order}/track', [App\Http\Controllers\OrderController::class, 'track'])->name('orders.track');
 
 
 // login các thứ 
@@ -77,15 +77,23 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 });
 // Route cho user
-// Route::middleware('auth')->group(function () {
-//     Route::get('/orders/{order}', [App\Http\Controllers\OrderController::class, 'show'])->name('orders.show');
-//     Route::get('/orders/{order}/track', [App\Http\Controllers\OrderController::class, 'track'])->name('orders.track');
-// });
+Route::middleware('auth')->group(function () {
+    Route::get('/orders/track', [App\Http\Controllers\OrderController::class, 'track'])->name('orders.track');
+    Route::get('/orders/{order}', [App\Http\Controllers\OrderController::class, 'show'])->name('orders.show');
+});
+
+
 
 // Route cho admin
 Route::middleware(['auth', AdminAuthentication::class])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('products', App\Http\Controllers\Admin\ProductsController::class);
     Route::resource('categories', App\Http\Controllers\Admin\CategoriesController::class);
     Route::resource('orders', App\Http\Controllers\Admin\OrderController::class);
 });
+
+// bankk 
+// Route::get('/checkout/qr/{order_id}', function ($order_id) {
+//     return view('cart.qr', ['order_id' => $order_id]);
+// })->name('checkout.qr');
+//

@@ -12,6 +12,21 @@
 
 <!-- Bootstrap Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+<style>
+    .chat-fixed {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #0084FF;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      z-index: 9999;
+    }
+  </style>
 </head>
 <body>
     @include('partials.header')
@@ -28,6 +43,8 @@
     <script src="{{ asset('js/jquery.zoom.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/checkout.js') }}"></script>
-    
+    <a href="https://m.me/614223091784069" target="_blank" class="chat-fixed">
+        💬 Message
+      </a>
 </body>
 </html>
