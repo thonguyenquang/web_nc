@@ -219,17 +219,17 @@
         <div class="dashboard-cards">
           <div class="dashboard-card" data-type="approved">
             <div class="icon-wrap"><i class="fas fa-check-circle"></i></div>
-            <div class="number" data-count="">0</div>
+            <div class="number" data-count="{{ $productCount ?? 0 }}">{{ number_format($productCount ?? 0) }}</div>
             <div class="label">Đã đăng</div>
           </div>
           <div class="dashboard-card" data-type="pending">
             <div class="icon-wrap"><i class="fas fa-hourglass-half"></i></div>
-            <div class="number" data-count="">0</div>
+            <div class="number" data-count="{{ $orderPending ?? 0 }}">{{ number_format($orderPending ?? 0) }}</div>
             <div class="label">Chờ duyệt</div>
           </div>
           <div class="dashboard-card" data-type="today">
             <div class="icon-wrap"><i class="fas fa-calendar-day"></i></div>
-            <div class="number" data-count="">0</div>
+            <div class="number" data-count="{{ $orderToday ?? 0 }}">{{ number_format($orderToday ?? 0) }}</div>
             <div class="label">Mới hôm nay</div>
           </div>
         </div>
@@ -242,12 +242,12 @@
         <div class="dashboard-cards">
           <div class="dashboard-card" data-type="user">
             <div class="icon-wrap"><i class="fas fa-users"></i></div>
-            <div class="number" data-count="">0</div>
+            <div class="number" data-count="{{ $userCount ?? 0 }}">{{ number_format($userCount ?? 0) }}</div>
             <div class="label">Tổng hiện tại</div>
           </div>
           <div class="dashboard-card" data-type="newuser">
             <div class="icon-wrap"><i class="fas fa-user-plus"></i></div>
-            <div class="number" data-count="">0</div>
+            <div class="number" data-count="{{ $newUserToday ?? 0 }}">{{ number_format($newUserToday ?? 0) }}</div>
             <div class="label">Mới hôm nay</div>
           </div>
         </div>

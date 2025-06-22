@@ -26,6 +26,7 @@
                     <th>Tổng tiền</th>
                     <th>Trạng thái</th>
                     <th>Ngày tạo</th>
+                    <th>Shipper</th>
                     <th>Hành động</th>
                 </tr>
             </thead>
@@ -42,6 +43,13 @@
                         </span>
                     </td>
                     <td>{{ $order->created_at->format('d/m/Y H:i') }}</td>
+                    <td>
+                        @if($order->shipper)
+                            <span class="badge bg-info text-dark">{{ $order->shipper->name }}<br><small>{{ $order->shipper->phone }}</small></span>
+                        @else
+                            <span class="badge bg-secondary">Chưa gán</span>
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('admin.orders.show', $order->id) }}" class="action-btn view">Xem</a>
                         <a href="{{ route('admin.orders.edit', $order->id) }}" class="action-btn edit">Sửa</a>

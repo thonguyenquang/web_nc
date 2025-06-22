@@ -14,15 +14,8 @@
 @endsection
 @section('content')
 <div class="container py-5">
-    <h2 class="text-center mb-4">Seasons Finest</h2>
-
-    {{-- Tabs --}}
-    <div class="text-center mb-4">
-        <button class="btn btn-link tab-btn active" data-category="flowers">FLOWERS</button>
-        <button class="btn btn-link tab-btn" data-category="plants">PLANTS</button>
-    </div>
+    <h2 class="display-5 text-center fw-bold mt-3 mb-5">Seasons Finest</h2>
     <section class="section">
-        <div class="section-title">Seasons Finiest</div>
         <div class="section-content">
             
             @foreach ($season_collection as $item )
@@ -161,7 +154,6 @@
         Furnish your beautiful bouquet with a gift from our handpicked edit.
     </p>
     <section class="section">
-        <div class="section-title">our shop</div>
         <div class="section-content">
             
             @foreach ($promotions as $item )

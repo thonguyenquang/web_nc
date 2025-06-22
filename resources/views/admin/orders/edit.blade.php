@@ -8,14 +8,46 @@
         <label>
             <span>Trạng thái mới:</span>
             <select name="status" required>
-                <option value="pending" {{ $order->status == 'pending' ? 'selected' : '' }}>Chờ xác nhận</option>
-                <option value="confirmed" {{ $order->status == 'confirmed' ? 'selected' : '' }}>Đã xác nhận</option>
-                <option value="shipped" {{ $order->status == 'shipped' ? 'selected' : '' }}>Đang giao</option>
-                <option value="completed" {{ $order->status == 'completed' ? 'selected' : '' }}>Hoàn tất</option>
-                <option value="canceled" {{ $order->status == 'canceled' ? 'selected' : '' }}>Đã hủy</option>
+                @if($order->status == 'pending')
+                    <option value="pending" selected>Chờ xác nhận</option>
+                    <option value="confirmed">Đã xác nhận</option>
+                @elseif($order->status == 'confirmed')
+                    <option value="confirmed" selected>Đã xác nhận</option>
+                @elseif($order->status == 'assigned')
+                    <option value="assigned" selected>Đã gán shipper</option>
+                @elseif($order->status == 'in_delivery')
+                    <option value="in_delivery" selected>Đang giao</option>
+                    <option value="delivered">Giao hàng thành công</option>
+                    <option value="cancel_requested">Yêu cầu hủy đơn</option>
+                @elseif($order->status == 'cancel_requested')
+                    <option value="cancel_requested" selected>Yêu cầu hủy đơn</option>
+                    <option value="cancelled">Xác nhận hủy</option>
+                @elseif($order->status == 'cancelled')
+                    <option value="cancelled" selected>Đã hủy</option>
+                @elseif($order->status == 'delivered')
+                    <option value="delivered" selected>Đã giao hàng</option>
+                @endif
             </select>
         </label>
-        <button type="submit" class="action-btn save">💾 Lưu</button>
+        <div class="mb-3">
+            <label for="shipper_id" class="form-label">Shipper phụ trách</label>
+            <select name="shipper_id" id="shipper_id" class="form-control" @if(!in_array($order->status, ['pending','confirmed'])) disabled @endif>
+                <option value="">-- Chưa gán --</option>
+                @foreach($shippers as $shipper)
+                    <option value="{{ $shipper->id }}" @if(old('shipper_id', $order->shipper_id)==$shipper->id) selected @endif>{{ $shipper->name }} ({{ $shipper->phone }})</option>
+                @endforeach
+            </select>
+            @if(!in_array($order->status, ['pending','confirmed']))
+                <small class="text-muted">Chỉ có thể gán shipper khi đơn hàng ở trạng thái "Chờ xác nhận" hoặc "Đã xác nhận".</small>
+            @endif
+        </div>
+        <button type="submit" class="action-btn save"
+            @if($order->status == 'assigned' || $order->status == 'in_delivery' || $order->status == 'cancel_requested' || $order->status == 'pending')
+                
+            @else
+                disabled
+            @endif
+        >💾 Lưu</button>
     </form>
 </section>
 

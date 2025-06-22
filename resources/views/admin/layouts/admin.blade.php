@@ -59,9 +59,9 @@
     
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{route('admin.shippers.index')}}">
                             <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-                            <span class="title">Setting</span>
+                            <span class="title">Shipper</span>
                         </a>
     
     

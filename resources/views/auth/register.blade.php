@@ -73,7 +73,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <a class="small" href="{{ route('login') }}">Đã có tài khoản?</a>
                         </div>
-                        <a href="{{ route('home') }}" class="btn btn-outline-secondary w-100 mb-2">Quay lại trang chủ</a>
+                        <a href="{{ route('layouts.home') }}" class="btn btn-outline-secondary w-100 mb-2">Quay lại trang chủ</a>
                         <button type="submit" class="btn btn-dark w-100">Đăng ký</button>
                     </form>
                 </div>
