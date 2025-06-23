@@ -21,6 +21,8 @@
                 <th>danh mục</th>
                 <th>mô tả</th>
                 <th>ảnh</th>
+                <th>Hành động</th>
+
             </tr>
         </thead>
         <tbody>
@@ -34,6 +36,13 @@
                     {{-- <td><img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" width="100"></td> --}}
                     {{-- <td> <img src="{{ asset($product->image) }}" alt="hoa" width="100"></td> --}}
                     <td><img src="{{ $product->image_url }}" alt="{{ $product->name }}" width="100"></td>
+                    <td>
+                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xoá sản phẩm này?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Xoá</button>
+                        </form>
+                    </td>
                 </tr>
             @empty
                 <tr>

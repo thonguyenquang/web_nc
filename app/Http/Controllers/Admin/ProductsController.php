@@ -99,7 +99,7 @@ class ProductsController extends Controller
 
         $product->save();
 
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+        return redirect()->route('admin.products.index')->with('success', 'Product updated successfully.');
     }
 
 
@@ -110,10 +110,9 @@ class ProductsController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('admin.products.index')->with('success', 'Xoá sản phẩm thành công.');
     }
-
+    
 
     public function search(Request $request)
     {

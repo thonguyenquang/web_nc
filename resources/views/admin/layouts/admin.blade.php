@@ -60,21 +60,13 @@
                     </li>
                     <li>
                         <a href="{{route('admin.shippers.index')}}">
-                            <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                            <span class="icon"><ion-icon name="rocket-outline"></ion-icon></span>
                             <span class="title">Shipper</span>
                         </a>
     
     
                     </li>
-                    
-    
-                    <li>
-                        <a href="#">
-                            <span class="icon"><ion-icon name="help-circle-outline"></ion-icon></span>
-                            <span class="title">Help</span>
-                        </a>
-                    </li>
-    
+               
     
                     <li>
                       
@@ -107,10 +99,10 @@
                     
     
                     <div class="user">
-                        <img src="{{asset('image/nguoihoa1.jpg')}}" alt="">
+                        <img src="{{asset('images/our4.webp')}}" alt="">
                     </div>
                 </div>
-   
+    
                     @yield('content')             
             </div>
             
