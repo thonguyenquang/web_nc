@@ -1,61 +1,72 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# 🌸 Website Bán Hoa – Laravel eCommerce Flower Shop
 
-## About Laravel
+## 📌 Giới thiệu
+Dự án **Website Bán Hoa** là một nền tảng thương mại điện tử đơn giản được xây dựng bằng Laravel, phục vụ cho mục đích bán các sản phẩm hoa tươi như: hoa bó, hoa giỏ, hoa cưới, hoa chúc mừng,… Dự án hỗ trợ đầy đủ các chức năng mua hàng, quản lý đơn hàng, đánh giá sản phẩm và phân hệ quản trị viên – shipper.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Website hướng đến việc cung cấp một **trải nghiệm mua sắm tiện lợi**, **giao diện thân thiện**, và quy trình đặt hoa nhanh chóng, dễ sử dụng cho mọi đối tượng khách hàng.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Các chức năng chính
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 💐 Dành cho người dùng:
+- Đăng ký / Đăng nhập
+- Xem danh sách sản phẩm hoa theo danh mục (hoa sinh nhật, hoa chúc mừng, hoa tình yêu,...)
+- Xem chi tiết sản phẩm
+- Tìm kiếm hoa theo tên
+- Thêm sản phẩm vào giỏ hàng
+- Đặt hàng và thanh toán (COD hoặc quét QR VietQR)
+- Theo dõi trạng thái đơn hàng
+- Viết đánh giá và bình luận
 
-## Learning Laravel
+### 👨‍💼 Dành cho quản trị viên (Admin):
+- Quản lý danh mục, thương hiệu, sản phẩm
+- Quản lý đơn hàng: duyệt đơn, gán shipper, xem lịch sử đơn
+- Quản lý người dùng và phân quyền
+- Quản lý nhân sự giao hàng (shipper)
+- Dashboard thống kê cơ bản
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🚚 Dành cho Shipper:
+- Nhận đơn hàng đã được gán
+- Cập nhật trạng thái giao hàng: đang giao, giao thành công, yêu cầu hủy đơn
+- Xác nhận hủy đơn nếu cần
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## ✅ Ưu điểm
+- 🔹 **Giao diện trực quan**, thân thiện với người dùng và dễ thao tác
+- 🔹 Sử dụng Laravel giúp **quản lý code rõ ràng**, có sẵn phân tầng Controller – Model – View
+- 🔹 Có phân quyền người dùng rõ ràng (User – Admin – Shipper)
+- 🔹 Hỗ trợ thanh toán bằng QR VietQR
+- 🔹 Có hệ thống đánh giá sản phẩm, tăng tính tương tác
+- 🔹 Hệ thống quản trị đơn giản, dễ mở rộng
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## ❌ Nhược điểm
+- 🔸 Chưa tích hợp các cổng thanh toán điện tử như MoMo, VNPay
+- 🔸 Trang admin chưa có dashboard biểu đồ hoặc báo cáo trực quan
+- 🔸 Thiếu các chức năng marketing như voucher, giảm giá theo dịp
+- 🔸 Giao diện chưa có thiết kế mobile-first (responsive chưa hoàn chỉnh)
+- 🔸 Chưa có hệ thống gợi ý sản phẩm (recommendation)
 
-## Laravel Sponsors
+## 🧰 Công nghệ sử dụng
+| Thành phần | Công nghệ |
+|-----------|-----------|
+| Backend | Laravel 10 (PHP 8.x) |
+| Frontend | Blade Template + Bootstrap 5 |
+| Cơ sở dữ liệu | MySQL / MariaDB |
+| Quản lý DB | phpMyAdmin |
+| Xác thực | Laravel Auth (custom login) |
+| Thanh toán | COD |
+| Phân quyền | Middleware + Role logic (User, Admin, Shipper) |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+> 📦 Dữ liệu mẫu đã được seed sẵn. Tài khoản demo:
+> - Admin: `admin@gmail.com` / `password`
+> - Shipper: `shipper@gmail.com` / `password`
+> - Khách: `user@gmail.com` / `password`
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🔮 Hướng phát triển trong tương lai
+- Tích hợp thanh toán điện tử (VNPay, MoMo, ZaloPay)
+- Xây dựng hệ thống khuyến mãi (mã giảm giá, flash sale, loyalty)
+- Phân tích doanh thu và hiển thị biểu đồ trong trang quản trị
+- Hệ thống gợi ý sản phẩm thông minh theo hành vi người dùng
+- Phát triển ứng dụng mobile hoặc Progressive Web App (PWA)
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
